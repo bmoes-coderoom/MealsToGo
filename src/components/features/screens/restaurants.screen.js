@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components/native';
+import styled from 'styled-components/native';
 import {
     StatusBar,
     SafeAreaView,
@@ -7,7 +7,6 @@ import {
   } from "react-native";
   import { Searchbar } from "react-native-paper";
   import { RestaurantInfoCard } from '../components/restaurant-info-card.component';
-  import {theme} from '../../../infrastructure/theme/index';
   
 const SafeArea = styled(SafeAreaView)`
           flex: 1;
