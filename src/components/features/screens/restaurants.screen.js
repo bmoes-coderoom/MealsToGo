@@ -27,17 +27,14 @@ const RestaurantListContainer = styled(View)`
 
 export const RestaurantsScreen = () => {
     return (
-      <ThemeProvider theme={theme}>
-                <SafeArea>
-        <SearchContainer>
-          <Searchbar/>
-        </SearchContainer>
-        <RestaurantListContainer>
-          <RestaurantInfoCard/>
-        </RestaurantListContainer>
-      </SafeArea>
-
-      </ThemeProvider>
+      <SafeArea>
+      <SearchContainer>
+        <Searchbar/>
+      </SearchContainer>
+      <RestaurantListContainer>
+        <RestaurantInfoCard/>
+      </RestaurantListContainer>
+    </SafeArea>
 
     );
 
