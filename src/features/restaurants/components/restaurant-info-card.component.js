@@ -6,9 +6,9 @@ import {Text} from '../../../components/typography/text.component';
 import star from "../../../../assets/star";
 import open from '../../../../assets/open';
 
-import { Icon,
+import {
+    Icon,
     Address,
-    Title,
     RestaurantCard,
     RestaurantCardCover,
     Info,
