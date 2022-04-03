@@ -12,6 +12,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from 'react-native';
 import { SafeArea } from './src/components/utility/safe-area.component';
+import { Ionicons } from "@expo/vector-icons";
 
 const Settings = () => (
   <SafeArea>
@@ -43,7 +44,26 @@ export default function App() {
     <>
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        <Tab.Navigator>
+      <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, size }) => {
+                let iconName;
+
+                if (route.name === "Restaurants") {
+                  iconName = "md-restaurant";
+                } else if (route.name === "Settings") {
+                  iconName = "md-settings";
+                } else if (route.name === "Map") {
+                  iconName = "md-map";
+                }
+
+                // You can return any component that you like here!
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+              tabBarActiveTintColor: 'tomato',
+              tabBarInactiveTintColor: 'gray',
+            })}
+          >
           <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
           <Tab.Screen name="Map" component={Map} />
           <Tab.Screen name="Settings" component={Settings} />
