@@ -26,6 +26,24 @@ const Map = () => (
 );
 
 const Tab = createBottomTabNavigator();
+
+const TAB_ICON = {
+  Restaurants: "md-restaurant",
+  Map: "md-map",
+  Settings: "md-settings",
+};
+
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+    tabBarActiveTintColor: 'tomato',
+    tabBarInactiveTintColor: 'gray',
+  };
+};
+
 export default function App() {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
@@ -45,24 +63,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
       <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ color, size }) => {
-                let iconName;
-
-                if (route.name === "Restaurants") {
-                  iconName = "md-restaurant";
-                } else if (route.name === "Settings") {
-                  iconName = "md-settings";
-                } else if (route.name === "Map") {
-                  iconName = "md-map";
-                }
-
-                // You can return any component that you like here!
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-              tabBarActiveTintColor: 'tomato',
-              tabBarInactiveTintColor: 'gray',
-            })}
+            screenOptions={createScreenOptions}
           >
           <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
           <Tab.Screen name="Map" component={Map} />
