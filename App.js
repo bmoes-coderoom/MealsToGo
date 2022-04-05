@@ -1,5 +1,5 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components/native";
 import * as firebase from "firebase";
 import {
@@ -11,9 +11,6 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { theme } from "./src/infrastructure/theme";
 import { Navigation } from "./src/infrastructure/navigation";
 
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 const firebaseConfig = {
@@ -46,14 +43,8 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-            <FavouritesContextProvider>
-              <LocationContextProvider>
-                <RestaurantsContextProvider>
-                  <Navigation />
-                </RestaurantsContextProvider>
-              </LocationContextProvider>
-            </FavouritesContextProvider>
-          </AuthenticationContextProvider>
+          <Navigation/>
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
